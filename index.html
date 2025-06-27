@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Мой первый сайт с jQuery</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+      background-color: #f0f0f0;
+      transition: background-color 0.5s;
+    }
+    button {
+      padding: 15px 30px;
+      font-size: 18px;
+      cursor: pointer;
+      border: none;
+      background-color: #4CAF50;
+      color: white;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+      margin-bottom: 20px;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    a {
+      color: #0066cc;
+      text-decoration: none;
+      font-size: 18px;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>Привет, мир!</h1>
+  <button id="colorBtn">Поменять цвет фона</button>
+
+  <p><a href="https://example.com" target="_blank" rel="noopener noreferrer">Перейти на example.com</a></p>
+
+  <!-- Подключаем локальный jQuery -->
+  <script src="js/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      const colors = ['#f0f0f0', '#ffcccc', '#ccffcc', '#ccccff', '#ffffcc'];
+      $('#colorBtn').click(function(){
+        let currentColor = $('body').css('background-color');
+        let newColor = colors[Math.floor(Math.random() * colors.length)];
+        while(newColor === currentColor){
+          newColor = colors[Math.floor(Math.random() * colors.length)];
+        }
+        $('body').css('background-color', newColor);
+      });
+    });
+  </script>
+</body>
+</html>
